@@ -24,5 +24,4 @@ WORKDIR /workspace
 # RUN tf get -login:${TFS_USER}@rmtools,${TFS_PASSWORD}
 
 RUN echo "LS_COLORS=$LS_COLORS:'di=0;36:' ; export LS_COLORS" >> ~/.bashrc
-COPY tfs_get /usr/local/bin/
 CMD ["/bin/bash"]
