@@ -1,0 +1,22 @@
+version: "3"
+services:
+  tfsclient:
+    build:
+      context: tfsclient
+      args:
+        - TFS_USER
+        - TFS_PASSWORD
+    volumes:
+      - /work/workspace:/workspace
+    stdin_open: true
+    tty: true
+  datapower:
+    build: datapower
+    volumes:
+      - /work/runtime/datapower/config:/drouter/config
+      - /work/runtime/datapower/local:/drouter/local
+    ports:
+      - "9090:9090"
+      - "2200:22"
+    depends_on:
+      - tfsclient
