@@ -24,9 +24,13 @@ services:
       - "2200:22"
     depends_on:
       - tfsclient
-  mock:
-    image: nginx
-    ports:
-      - "8080:80"
-    volumes:
-      - /work/runtime/mock:/usr/share/nginx/html
+  baseos:
+    build: baseos
+  mq:
+    build: mq
+    depends_on:
+      - baseos
+  hib:
+    build: hib
+    depends_on:
+      - mq
