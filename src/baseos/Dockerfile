@@ -8,16 +8,11 @@ RUN groupadd -g 1160 fmbl && \
     
 RUN useradd -g log -u 1155 hial && useradd -g fmbl -G log -u 1200 fmbl
 
-RUN mkdir /hial && \
-    mkdir /hial/apps && \
-    mkdir /hial/nfs && \
-    mkdir /hial/setup && \
-    mkdir /hial/DTE && \
-    mkdir /hial/ITE2 && \
-    mkdir /hial/PPE && \
-    mkdir /hial/PROD && \
-    mkdir /hial/DR
+RUN mkdir /hial
 
 RUN yum -y install rsyslog7.x86_64 && \
     service rsyslog start && \
     service rsyslog stop
+
+RUN echo "LS_COLORS=$LS_COLORS:'di=0;36:' ; export LS_COLORS" >> ~/.bashrc
+CMD ["/bin/bash"]
