@@ -1,3 +1,0 @@
-FROM hial_baseos
-
-
