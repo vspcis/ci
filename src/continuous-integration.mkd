@@ -1,0 +1,7 @@
+### Continuous integration
+
+Set TFS credentials
+```
+export TFS_USER=<username>
+export TFS_PASSWORD=<password>
+```

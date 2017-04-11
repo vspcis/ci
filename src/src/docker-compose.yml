@@ -1,0 +1,44 @@
+version: "3"
+services:
+  tfsclient:
+    build:
+      context: tfsclient
+      args:
+        - TFS_USER
+        - TFS_PASSWORD
+    volumes:
+      - /work/workspace:/workspace
+    stdin_open: true
+    tty: true
+  soapui:
+    image: ddavison/soapui
+    ports:
+      - "3000:3000"
+  datapower:
+    build: datapower
+    volumes:
+      - /work/runtime/datapower/config:/drouter/config
+      - /work/runtime/datapower/local:/drouter/local
+    ports:
+      - "9090:9090"
+      - "2200:22"
+    depends_on:
+      - tfsclient
+  baseos:
+    build: baseos
+    stdin_open: true
+    tty: true
+  mq:
+    build: mq
+    depends_on:
+      - baseos
+    stdin_open: true
+    tty: true
+  hib:
+    build: hib
+    depends_on:
+      - mq
+    volumes:
+      - /work/runtime/hial:/hial
+    stdin_open: true
+    tty: true
