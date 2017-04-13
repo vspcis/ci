@@ -1,1 +1,3 @@
 src/baseos/src/*
+src/mq/src/*
+src/hib/src/*

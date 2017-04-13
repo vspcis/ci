@@ -9,6 +9,7 @@ RUN yum -y install rsyslog7.x86_64 && \
     yum -y install libuuid-devel && \
     yum -y install libee.x86_64 && \
     yum -y install /tmp/rsyslog/rpms/rsyslog_dependencies/uuid-devel-1.6.1-10.el6.x86_64.rpm && \
+    yum -y install /tmp/liblogging-1.0.4-1.el6.x86_64.rpm && \
     yum clean all
 
 RUN groupadd -g 1160 fmbl && \
@@ -57,12 +58,12 @@ RUN yum -y install ocilib-4.1.0-1.x86_64.rpm
 WORKDIR /hial/setup
 RUN cp -r /tmp/HIAL_BootScripts/* . && \
     cp /hial/setup/config/rc.local /etc/rc.local && \
-    cp /hial/setup/config/service/commonlog /etc/init.d && \
+    cp -p /hial/setup/config/service/commonlog /etc/init.d && \
     chkconfig --add commonlog && \
     chkconfig --level 35 commonlog on && \
     chmod 755 /etc/init.d/commonlog
 
-# RUN rm -rf /tmp/*
+RUN rm -rf /tmp/*
 
 WORKDIR /
 
