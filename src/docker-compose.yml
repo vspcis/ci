@@ -26,19 +26,22 @@ services:
       - tfsclient
   baseos:
     build: baseos
-    stdin_open: true
-    tty: true
+#    stdin_open: true
+#    tty: true
   mq:
     build: mq
     depends_on:
       - baseos
-    stdin_open: true
-    tty: true
+#    stdin_open: true
+#    tty: true
   hib:
     build: hib
     depends_on:
       - mq
     volumes:
       - /work/runtime/hial:/hial
-    stdin_open: true
-    tty: true
+    ports:
+      - "9080:9080"
+      - "4414:4414"
+#    stdin_open: true
+#    tty: true

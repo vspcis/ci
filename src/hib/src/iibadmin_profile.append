@@ -1,0 +1,11 @@
+
+#load MQSI profile
+if [ -f  /opt/ibm/mqsi/9.0.0.2/bin/mqsiprofile ]; then
+        .  /opt/ibm/mqsi/9.0.0.2/bin/mqsiprofile > iibadmin_log 2>&1
+fi
+
+#load Oracle client profile
+#if [ -f /opt/oracle/instantclient_11_2/admin/oracle_profile ]; then
+#        . /opt/oracle/instantclient_11_2/admin/oracle_profile
+#fi
+

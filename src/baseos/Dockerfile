@@ -11,6 +11,7 @@ RUN yum -y install rsyslog7.x86_64 && \
     yum -y install /tmp/rsyslog/rpms/rsyslog_dependencies/uuid-devel-1.6.1-10.el6.x86_64.rpm && \
     yum -y install /tmp/liblogging-1.0.4-1.el6.x86_64.rpm && \
     yum -y install gtk2 && \
+    yum -y install sudo && \
     yum clean all
 
 RUN groupadd -g 1160 fmbl && \
