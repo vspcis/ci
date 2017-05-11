@@ -16,5 +16,7 @@ RUN su - mqm -c "strmqm HIAL.CI"
 
 RUN rm -rf /tmp/*
 
+EXPOSE 1414
+
 WORKDIR /
 

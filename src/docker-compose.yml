@@ -38,6 +38,8 @@ services:
     build: mq
     depends_on:
       - baseos
+    ports:
+      - "1414:1414"
 #    stdin_open: true
 #    tty: true
   hib:
