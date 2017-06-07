@@ -46,8 +46,6 @@ services:
     build: hib
     depends_on:
       - mq
-    volumes:
-      - /work/runtime/hial:/hial
     ports:
       - "9080:9080"
       - "4414:4414"
